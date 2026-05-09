@@ -64,7 +64,7 @@ export default function TemplatesPage() {
                 <div className="rounded-2xl border border-white/10 bg-[#050510]/80 p-8 shadow-2xl shadow-cyan-950/20">
                   <div className="mx-auto max-w-3xl rounded bg-zinc-100 p-8 text-zinc-950">
                     <div className="text-center font-serif text-2xl font-bold">Silverstone Legal LLP</div>
-                    <div className="mt-1 text-center text-base text-zinc-600">Engagement Letter · Attorney-Review Draft</div>
+                    <div className="mt-1 text-center text-base text-[#63637a]">Engagement Letter · Attorney-Review Draft</div>
                     <div className="mt-8 text-base leading-7">
                       <p>Dear Northstar Foods,</p>
                       <p className="mt-4">

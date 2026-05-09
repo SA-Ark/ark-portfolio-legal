@@ -22,7 +22,7 @@ const options: ISourceOptions = {
       },
     },
     color: {
-      value: ["#00d4ff", "#7c3aed"],
+      value: "#00d4ff",
     },
     shape: {
       type: "circle",
@@ -36,7 +36,7 @@ const options: ISourceOptions = {
     links: {
       enable: true,
       color: "#00d4ff",
-      opacity: 0.22,
+      opacity: 0.26,
       distance: 145,
       width: 1,
     },
@@ -90,7 +90,7 @@ export function ParticleHero() {
   return (
     <Particles
       id="hero-particles"
-      className="pointer-events-none absolute inset-0 -z-10 opacity-80"
+      className="absolute inset-0 z-0 opacity-70"
       options={options}
     />
   );

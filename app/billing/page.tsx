@@ -1,4 +1,5 @@
 import { Banknote, BarChart3, CircleDollarSign, FileCheck2, ReceiptText } from "lucide-react";
+import { PhaseFeesChartDynamic } from "@/components/charts/phase-fees-chart-dynamic";
 import { Reveal, Stagger, StaggerItem } from "@/components/effects/motion";
 import { PageHero } from "@/components/page-hero";
 import { Badge } from "@/components/ui/badge";
@@ -37,7 +38,6 @@ const phaseTotals = ["Fact Development", "Drafting", "Research", "Client Communi
   phase,
   total: timeEntries.filter((entry) => entry.phase === phase).reduce((sum, entry) => sum + getEntryAmount(entry), 0),
 }));
-const maxPhase = Math.max(...phaseTotals.map((item) => item.total));
 
 export default function BillingPage() {
   return (
@@ -57,7 +57,7 @@ export default function BillingPage() {
       <section className="grid gap-5 lg:grid-cols-[1fr_24rem]">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><ReceiptText className="h-5 w-5 text-blue-200" /> Timesheet</CardTitle>
+            <CardTitle className="flex items-center gap-2"><ReceiptText className="h-5 w-5 text-cyan-200" /> Timesheet</CardTitle>
             <CardDescription>Recent timekeeper entries with attorney rates and fee calculation.</CardDescription>
           </CardHeader>
           <CardContent>
@@ -89,10 +89,11 @@ export default function BillingPage() {
             <CardDescription>Fees by work phase.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
+            <PhaseFeesChartDynamic data={phaseTotals} />
             {phaseTotals.map((item) => (
-              <div key={item.phase}>
-                <div className="mb-2 flex justify-between text-sm"><span>{item.phase}</span><span>{money(item.total)}</span></div>
-                <Progress value={(item.total / maxPhase) * 100} />
+              <div key={item.phase} className="flex items-center justify-between rounded-2xl border border-white/[0.06] bg-white/[0.03] px-4 py-3">
+                <span>{item.phase}</span>
+                <span className="font-semibold text-cyan-100">{money(item.total)}</span>
               </div>
             ))}
           </CardContent>
@@ -107,7 +108,7 @@ export default function BillingPage() {
           <CardContent className="space-y-3">
             {invoices.map((invoice) => (
               <div key={invoice.id} className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                <div><div className="font-medium">{invoice.id} · {invoice.client}</div><div className="mt-1 text-sm text-zinc-400">{invoice.matter} · Due {invoice.due}</div></div>
+                <div><div className="font-medium">{invoice.id} · {invoice.client}</div><div className="mt-1 text-base text-[#8888a0]">{invoice.matter} · Due {invoice.due}</div></div>
                 <div className="text-right"><div className="font-semibold">{money(invoice.amount)}</div><Badge variant={invoice.status === "Approved" ? "success" : invoice.status === "Sent" ? "warning" : "secondary"}>{invoice.status}</Badge></div>
               </div>
             ))}
@@ -119,11 +120,11 @@ export default function BillingPage() {
           <CardContent className="space-y-4">
             {trustAccounts.map((account) => (
               <div key={account.client} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                <div className="flex justify-between gap-3"><div><div className="font-medium">{account.client}</div><div className="text-sm text-zinc-400">{account.label}</div></div><div className="font-semibold">{money(account.balance)}</div></div>
-                <div className="mt-3"><div className="mb-1 flex justify-between text-xs text-zinc-500"><span>Reserved</span><span>{money(account.reserved)}</span></div><Progress value={(account.reserved / account.balance) * 100} /></div>
+                <div className="flex justify-between gap-3"><div><div className="font-medium">{account.client}</div><div className="text-base text-[#8888a0]">{account.label}</div></div><div className="font-semibold">{money(account.balance)}</div></div>
+                <div className="mt-3"><div className="mb-1 flex justify-between text-base text-[#8888a0]"><span>Reserved</span><span>{money(account.reserved)}</span></div><Progress value={(account.reserved / account.balance) * 100} /></div>
               </div>
             ))}
-            <div className="rounded-2xl border border-emerald-300/20 bg-emerald-500/10 p-4 text-sm text-emerald-50">All client funds are displayed separately from operating invoices for ethical accounting controls.</div>
+            <div className="rounded-2xl border border-emerald-300/20 bg-emerald-500/10 p-4 text-base text-emerald-50">All client funds are displayed separately from operating invoices for ethical accounting controls.</div>
           </CardContent>
         </Card>
       </section>

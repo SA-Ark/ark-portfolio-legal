@@ -38,20 +38,20 @@ export default function ResearchPage() {
       <section className="grid gap-5 lg:grid-cols-[1fr_22rem]">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><Bot className="h-5 w-5 text-blue-200" /> Research chat</CardTitle>
+            <CardTitle className="flex items-center gap-2"><Bot className="h-5 w-5 text-cyan-200" /> Research chat</CardTitle>
             <CardDescription>Scripted legal Q&A with authority snippets and practical drafting guidance.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-5">
             {qa.map((item) => (
               <div key={item.question} className="space-y-3">
-                <div className="ml-auto flex max-w-3xl gap-3 rounded-2xl border border-blue-300/20 bg-blue-500/10 p-4">
-                  <UserRound className="mt-1 h-5 w-5 shrink-0 text-blue-200" />
-                  <div className="leading-7 text-blue-50">{item.question}</div>
+                <div className="ml-auto flex max-w-3xl gap-3 rounded-2xl border border-cyan-300/20 bg-cyan-500/10 p-4">
+                  <UserRound className="mt-1 h-5 w-5 shrink-0 text-cyan-200" />
+                  <div className="leading-7 text-cyan-50">{item.question}</div>
                 </div>
                 <div className="flex max-w-4xl gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4">
                   <Bot className="mt-1 h-5 w-5 shrink-0 text-violet-200" />
                   <div>
-                    <p className="leading-7 text-zinc-200">{item.answer}</p>
+                    <p className="leading-7 text-[#e8e8ed]">{item.answer}</p>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {item.sources.map((source) => <Badge key={source} variant="secondary">{source}</Badge>)}
                     </div>
@@ -59,7 +59,7 @@ export default function ResearchPage() {
                 </div>
               </div>
             ))}
-            <div className="flex gap-3 rounded-2xl border border-white/10 bg-zinc-950/70 p-3">
+            <div className="flex gap-3 rounded-2xl border border-white/10 bg-[#050510]/70 p-3">
               <Input placeholder="Ask about venue, limitations, evidentiary standards..." />
               <Button><Send className="h-4 w-4" /> Ask</Button>
             </div>
@@ -84,7 +84,7 @@ export default function ResearchPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2"><Gavel className="h-5 w-5 text-orange-200" /> Drafting output</CardTitle>
             </CardHeader>
-            <CardContent className="text-sm leading-7 text-zinc-400">
+            <CardContent className="text-base leading-7 text-[#8888a0]">
               The assistant can convert answers into motion outlines, client memos, deposition topics, diligence checklists, or contract markups while preserving cited authority context.
             </CardContent>
           </Card>
@@ -92,7 +92,7 @@ export default function ResearchPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2"><BookOpen className="h-5 w-5 text-violet-200" /> Guardrails</CardTitle>
             </CardHeader>
-            <CardContent className="text-sm leading-7 text-zinc-400">
+            <CardContent className="text-base leading-7 text-[#8888a0]">
               Demo language flags jurisdiction, recency, and attorney-review requirements before use in live legal work.
             </CardContent>
           </Card>

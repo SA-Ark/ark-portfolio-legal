@@ -48,7 +48,7 @@ export default function DeadlinesPage() {
               <CardDescription>Visual schedule with color-coded legal operations urgency.</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-7 gap-2 text-center text-xs uppercase tracking-[0.16em] text-[#8888a0]">
+              <div className="grid grid-cols-7 gap-2 text-center text-base uppercase tracking-[0.16em] text-[#8888a0]">
                 {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => <div key={day}>{day}</div>)}
               </div>
               <div className="mt-3 grid grid-cols-7 gap-2">
@@ -58,10 +58,10 @@ export default function DeadlinesPage() {
                   const dayDeadlines = deadlines.filter((deadline) => deadline.date === date);
                   return (
                     <div key={`${absoluteDay}-${date}`} className="min-h-28 rounded-2xl border border-white/10 bg-white/[0.025] p-2 text-left transition hover:border-cyan-300/30 hover:bg-white/[0.04]">
-                      <div className={absoluteDay > 28 ? "text-base text-zinc-300" : "text-base text-zinc-600"}>{day}</div>
+                      <div className={absoluteDay > 28 ? "text-base text-[#d8d8e5]" : "text-base text-[#63637a]"}>{day}</div>
                       <div className="mt-2 space-y-1">
                         {dayDeadlines.map((deadline) => (
-                          <div key={deadline.id} className={`rounded-lg border px-2 py-1 text-xs leading-5 ${colors[deadline.priority]}`}>{deadline.title}</div>
+                          <div key={deadline.id} className={`rounded-lg border px-2 py-1 text-base leading-5 ${colors[deadline.priority]}`}>{deadline.title}</div>
                         ))}
                       </div>
                     </div>
@@ -88,7 +88,7 @@ export default function DeadlinesPage() {
                       </div>
                       <Badge variant={variant(deadline.priority)}>{deadline.priority}</Badge>
                     </div>
-                    <div className="mt-3 text-sm text-[#8888a0]">{legalCase?.caseNumber} · {legalCase?.client} · Owner: {deadline.owner}</div>
+                    <div className="mt-3 text-base text-[#8888a0]">{legalCase?.caseNumber} · {legalCase?.client} · Owner: {deadline.owner}</div>
                   </div>
                 );
               })}

@@ -10,13 +10,13 @@ const buttonVariants = cva(
       variant: {
         default: "accent-gradient text-white shadow-[0_0_30px_rgba(0,212,255,0.24)] hover:shadow-[0_0_34px_rgba(124,58,237,0.32)] hover:brightness-110",
         secondary: "border border-white/[0.08] bg-white/[0.055] text-white backdrop-blur-xl hover:border-cyan-300/30 hover:bg-white/[0.09] hover:shadow-[0_0_30px_rgba(0,212,255,0.10)]",
-        ghost: "text-zinc-300 hover:bg-white/[0.06] hover:text-white",
+        ghost: "text-[#d8d8e5] hover:bg-white/[0.06] hover:text-white",
         outline: "border border-cyan-400/40 bg-cyan-400/10 text-cyan-100 hover:bg-cyan-400/15 hover:shadow-[0_0_30px_rgba(0,212,255,0.18)]",
         destructive: "bg-red-500 text-white hover:bg-red-400",
       },
       size: {
         default: "h-11 px-4 py-2",
-        sm: "h-9 rounded-lg px-3 text-sm",
+        sm: "h-9 rounded-lg px-3 text-base",
         lg: "h-12 rounded-2xl px-6 text-base",
         icon: "h-11 w-11",
       },

@@ -75,7 +75,7 @@ export default function AnalyzerPage() {
               <TabsContent value="terms" className="grid gap-4 md:grid-cols-4">
                 {selected.keyTerms.map((term) => (
                   <div key={term.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-                    <div className="text-xs uppercase tracking-[0.2em] text-[#8888a0]">{term.label}</div>
+                    <div className="text-base uppercase tracking-[0.2em] text-[#8888a0]">{term.label}</div>
                     <div className="mt-3 font-medium text-white">{term.value}</div>
                   </div>
                 ))}
@@ -94,18 +94,18 @@ export default function AnalyzerPage() {
                 {selected.riskFlags.map((flag) => (
                   <div key={flag.text} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
                     <Badge variant={riskVariant(flag.severity)}><AlertTriangle className="mr-1 h-3.5 w-3.5" />{flag.severity}</Badge>
-                    <p className="mt-4 leading-7 text-zinc-300">{flag.text}</p>
+                    <p className="mt-4 leading-7 text-[#d8d8e5]">{flag.text}</p>
                   </div>
                 ))}
               </TabsContent>
               <TabsContent value="compare" className="grid gap-4 lg:grid-cols-2">
                 <div className="rounded-2xl border border-red-300/20 bg-red-500/8 p-5">
                   <Badge variant="danger">Original clause</Badge>
-                  <p className="mt-4 font-mono text-base leading-7 text-zinc-300">{selected.excerpt}</p>
+                  <p className="mt-4 font-mono text-base leading-7 text-[#d8d8e5]">{selected.excerpt}</p>
                 </div>
                 <div className="rounded-2xl border border-emerald-300/20 bg-emerald-500/8 p-5">
                   <Badge variant="success"><ShieldCheck className="mr-1 h-3.5 w-3.5" />Suggested revision</Badge>
-                  <p className="mt-4 font-mono text-base leading-7 text-zinc-300">{selected.revision}</p>
+                  <p className="mt-4 font-mono text-base leading-7 text-[#d8d8e5]">{selected.revision}</p>
                 </div>
               </TabsContent>
             </Tabs>

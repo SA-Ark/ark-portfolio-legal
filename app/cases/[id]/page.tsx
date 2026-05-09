@@ -59,19 +59,19 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ id:
           </CardHeader>
           <CardContent className="grid gap-4 md:grid-cols-4">
             <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
-              <div className="text-xs uppercase tracking-[0.2em] text-zinc-500">Client</div>
+              <div className="text-base uppercase tracking-[0.2em] text-[#8888a0]">Client</div>
               <div className="mt-2 font-medium text-white">{legalCase.client}</div>
             </div>
             <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
-              <div className="text-xs uppercase tracking-[0.2em] text-zinc-500">Court / venue</div>
+              <div className="text-base uppercase tracking-[0.2em] text-[#8888a0]">Court / venue</div>
               <div className="mt-2 font-medium text-white">{legalCase.court}</div>
             </div>
             <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
-              <div className="text-xs uppercase tracking-[0.2em] text-zinc-500">Matter value</div>
+              <div className="text-base uppercase tracking-[0.2em] text-[#8888a0]">Matter value</div>
               <div className="mt-2 font-medium text-white">{legalCase.value}</div>
             </div>
             <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
-              <div className="text-xs uppercase tracking-[0.2em] text-zinc-500">Opened</div>
+              <div className="text-base uppercase tracking-[0.2em] text-[#8888a0]">Opened</div>
               <div className="mt-2 font-medium text-white">{legalCase.opened}</div>
             </div>
           </CardContent>
@@ -79,15 +79,15 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ id:
 
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><BriefcaseBusiness className="h-5 w-5 text-blue-200" /> Lead attorney</CardTitle>
+            <CardTitle className="flex items-center gap-2"><BriefcaseBusiness className="h-5 w-5 text-cyan-200" /> Lead attorney</CardTitle>
             <CardDescription>Ownership, billing rate, and coverage.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
               <div className="text-xl font-semibold">{attorney?.name}</div>
-              <div className="text-sm text-zinc-500">{attorney?.role} · {attorney?.email}</div>
+              <div className="text-base text-[#8888a0]">{attorney?.role} · {attorney?.email}</div>
             </div>
-            <div className="rounded-xl bg-white/[0.04] p-4 text-sm text-zinc-300">
+            <div className="rounded-xl bg-white/[0.04] p-4 text-base text-[#d8d8e5]">
               <div className="flex justify-between"><span>Rate</span><span className="text-white">${attorney?.rate}/hr</span></div>
               <div className="mt-2 flex justify-between"><span>Billable total</span><span className="text-white">{money(billableTotal)}</span></div>
               <div className="mt-2 flex justify-between"><span>Hours logged</span><span className="text-white">{hoursTotal.toFixed(1)}</span></div>
@@ -116,7 +116,7 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ id:
                 <div key={`${party.role}-${party.name}`} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
                   <Badge variant="secondary">{party.role}</Badge>
                   <div className="mt-4 text-lg font-semibold">{party.name}</div>
-                  {party.counsel ? <div className="mt-2 text-sm text-zinc-400">Counsel: {party.counsel}</div> : null}
+                  {party.counsel ? <div className="mt-2 text-base text-[#8888a0]">Counsel: {party.counsel}</div> : null}
                 </div>
               ))}
             </CardContent>
@@ -129,8 +129,8 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ id:
             <CardContent className="space-y-4">
               {legalCase.timeline.map((item) => (
                 <div key={`${item.date}-${item.event}`} className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-500/15 text-blue-100"><Scale className="h-5 w-5" /></div>
-                  <div><div className="text-sm text-zinc-500">{item.date} · {item.type}</div><div className="mt-1 font-medium">{item.event}</div></div>
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-100"><Scale className="h-5 w-5" /></div>
+                  <div><div className="text-base text-[#8888a0]">{item.date} · {item.type}</div><div className="mt-1 font-medium">{item.event}</div></div>
                 </div>
               ))}
             </CardContent>
@@ -176,7 +176,7 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ id:
               {legalCase.communications.map((message) => (
                 <div key={`${message.date}-${message.subject}`} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
                   <div className="flex flex-wrap items-center justify-between gap-2"><div className="font-medium">{message.subject}</div><Badge variant="purple">{message.channel}</Badge></div>
-                  <div className="mt-2 text-sm text-zinc-400">{message.date} · From {message.from}</div>
+                  <div className="mt-2 text-base text-[#8888a0]">{message.date} · From {message.from}</div>
                 </div>
               ))}
             </CardContent>
@@ -189,10 +189,10 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ id:
             <CardContent className="space-y-3">
               {caseDeadlines.length ? caseDeadlines.map((deadline) => (
                 <div key={deadline.id} className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                  <div><div className="font-medium">{deadline.title}</div><div className="text-sm text-zinc-400">{deadline.date} · {deadline.type}</div></div>
+                  <div><div className="font-medium">{deadline.title}</div><div className="text-base text-[#8888a0]">{deadline.date} · {deadline.type}</div></div>
                   <Badge variant={deadlineVariant(deadline.priority)}>{deadline.priority}</Badge>
                 </div>
-              )) : <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-zinc-400">No standalone deadline in the master deadline set; next deadline is {legalCase.nextDeadline}.</div>}
+              )) : <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-[#8888a0]">No standalone deadline in the master deadline set; next deadline is {legalCase.nextDeadline}.</div>}
             </CardContent>
           </Card>
         </TabsContent>

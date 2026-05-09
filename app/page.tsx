@@ -33,7 +33,7 @@ export default function Home() {
           <ParticleHeroDynamic />
           <span className="hero-orb left-10 top-10 h-24 w-24 bg-cyan-400/20" aria-hidden="true" />
           <span className="hero-orb bottom-6 right-12 h-32 w-32 bg-violet-600/20 [animation-delay:1.2s]" aria-hidden="true" />
-          <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+          <div className="relative z-10 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
             <div>
               <Badge variant="purple" className="mb-4">Matter Command Dashboard</Badge>
               <h1 className="shimmer-text max-w-4xl font-heading text-5xl font-extrabold tracking-tight md:text-7xl">
@@ -121,19 +121,19 @@ export default function Home() {
                   const attorney = getAttorney(legalCase.attorneyId);
                   return (
                     <TableRow key={legalCase.id}>
-                      <TableCell className="font-mono text-sm text-cyan-200">{legalCase.caseNumber}</TableCell>
+                      <TableCell className="font-mono text-base text-cyan-200">{legalCase.caseNumber}</TableCell>
                       <TableCell>
                         <div className="font-medium text-white">{legalCase.client}</div>
-                        <div className="text-sm text-[#8888a0]">{legalCase.title}</div>
+                        <div className="text-base text-[#8888a0]">{legalCase.title}</div>
                       </TableCell>
-                      <TableCell className="text-zinc-300">{legalCase.practiceArea}</TableCell>
+                      <TableCell className="text-[#d8d8e5]">{legalCase.practiceArea}</TableCell>
                       <TableCell><Badge variant={statusVariant(legalCase.status)}>{legalCase.status}</Badge></TableCell>
                       <TableCell>
-                        <div className="text-zinc-100">{attorney?.name}</div>
-                        <div className="text-sm text-[#8888a0]">{attorney?.role}</div>
+                        <div className="text-white">{attorney?.name}</div>
+                        <div className="text-base text-[#8888a0]">{attorney?.role}</div>
                       </TableCell>
                       <TableCell>
-                        <div className="flex items-center gap-2 text-zinc-100"><CalendarClock className="h-4 w-4 text-orange-200" />{legalCase.nextDeadline}</div>
+                        <div className="flex items-center gap-2 text-white"><CalendarClock className="h-4 w-4 text-orange-200" />{legalCase.nextDeadline}</div>
                       </TableCell>
                       <TableCell><Badge variant={riskVariant(legalCase.risk)}>{legalCase.risk}</Badge></TableCell>
                       <TableCell className="text-right">

@@ -24,7 +24,7 @@ export function PageHero({
         <ParticleHeroDynamic />
         <span className="hero-orb left-10 top-10 h-24 w-24 bg-cyan-400/20" aria-hidden="true" />
         <span className="hero-orb bottom-6 right-12 h-32 w-32 bg-violet-600/20 [animation-delay:1.2s]" aria-hidden="true" />
-        <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+        <div className="relative z-10 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <div>
             <Badge variant={badgeVariant} className="mb-4">{badge}</Badge>
             <h1 className="shimmer-text max-w-4xl font-heading text-5xl font-extrabold tracking-tight md:text-6xl">{title}</h1>
