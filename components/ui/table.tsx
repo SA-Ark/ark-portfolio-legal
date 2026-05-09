@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(
   ({ className, ...props }, ref) => (
     <div className="w-full overflow-auto scrollbar-thin">
-      <table ref={ref} className={cn("w-full caption-bottom text-sm", className)} {...props} />
+      <table ref={ref} className={cn("w-full caption-bottom text-base", className)} {...props} />
     </div>
   )
 );
@@ -22,14 +22,14 @@ TableBody.displayName = "TableBody";
 
 const TableRow = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTMLTableRowElement>>(
   ({ className, ...props }, ref) => (
-    <tr ref={ref} className={cn("border-b border-white/10 transition-colors hover:bg-white/[0.03]", className)} {...props} />
+    <tr ref={ref} className={cn("border-b border-white/[0.06] transition-colors hover:bg-white/[0.035]", className)} {...props} />
   )
 );
 TableRow.displayName = "TableRow";
 
 const TableHead = React.forwardRef<HTMLTableCellElement, React.ThHTMLAttributes<HTMLTableCellElement>>(
   ({ className, ...props }, ref) => (
-    <th ref={ref} className={cn("h-11 px-4 text-left align-middle font-medium text-zinc-400", className)} {...props} />
+    <th ref={ref} className={cn("h-11 px-4 text-left align-middle text-base font-medium text-[#8888a0]", className)} {...props} />
   )
 );
 TableHead.displayName = "TableHead";

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { BriefcaseBusiness, CalendarClock, Mail, ReceiptText, Scale, Users } from "lucide-react";
+import { Reveal } from "@/components/effects/motion";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -43,7 +44,8 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ id:
   const hoursTotal = caseTimeEntries.reduce((total, entry) => total + entry.hours, 0);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-20 md:space-y-[120px]">
+      <Reveal>
       <section className="grid gap-5 lg:grid-cols-[1fr_22rem]">
         <Card>
           <CardHeader>
@@ -52,7 +54,7 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ id:
               <Badge variant={legalCase.risk === "High" ? "danger" : legalCase.risk === "Medium" ? "warning" : "success"}>{legalCase.risk} risk</Badge>
               <Badge variant="purple">{legalCase.status}</Badge>
             </div>
-            <CardTitle className="text-3xl">{legalCase.title}</CardTitle>
+            <CardTitle className="shimmer-text text-4xl font-extrabold md:text-5xl">{legalCase.title}</CardTitle>
             <CardDescription className="max-w-4xl text-base">{legalCase.summary}</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4 md:grid-cols-4">
@@ -93,7 +95,9 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ id:
           </CardContent>
         </Card>
       </section>
+      </Reveal>
 
+      <Reveal>
       <Tabs defaultValue="parties" className="w-full">
         <TabsList className="flex w-full flex-wrap">
           <TabsTrigger value="parties"><Users className="mr-2 h-4 w-4" />Parties</TabsTrigger>
@@ -193,6 +197,7 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ id:
           </Card>
         </TabsContent>
       </Tabs>
+      </Reveal>
     </div>
   );
 }

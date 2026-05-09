@@ -1,4 +1,6 @@
 import { Banknote, BarChart3, CircleDollarSign, FileCheck2, ReceiptText } from "lucide-react";
+import { Reveal, Stagger, StaggerItem } from "@/components/effects/motion";
+import { PageHero } from "@/components/page-hero";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -39,22 +41,19 @@ const maxPhase = Math.max(...phaseTotals.map((item) => item.total));
 
 export default function BillingPage() {
   return (
-    <div className="space-y-8">
-      <section>
-        <Badge variant="success" className="mb-4">Billing & Trust Accounting</Badge>
-        <h1 className="font-heading text-4xl font-semibold tracking-tight text-gradient">Financial command center</h1>
-        <p className="mt-4 max-w-3xl text-lg leading-8 text-zinc-400">
-          Time entries, invoices, trust balances, and chart summaries for law-firm matter economics.
-        </p>
-      </section>
+    <div className="space-y-20 md:space-y-[120px]">
+      <PageHero badge="Billing & Trust Accounting" badgeVariant="success" title="Financial command center">
+        Time entries, invoices, trust balances, and chart summaries for law-firm matter economics.
+      </PageHero>
 
-      <section className="grid gap-4 md:grid-cols-4">
-        <Card><CardHeader className="pb-2"><CardDescription>Total fees</CardDescription><CardTitle className="flex items-center gap-2 text-3xl"><CircleDollarSign className="h-6 w-6 text-emerald-200" />{money(totalFees)}</CardTitle></CardHeader><CardContent className="text-sm text-zinc-400">From 50 time entries</CardContent></Card>
-        <Card><CardHeader className="pb-2"><CardDescription>Total hours</CardDescription><CardTitle className="text-3xl">{totalHours.toFixed(1)}</CardTitle></CardHeader><CardContent className="text-sm text-zinc-400">Billable and non-billable</CardContent></Card>
-        <Card><CardHeader className="pb-2"><CardDescription>Invoice pipeline</CardDescription><CardTitle className="text-3xl">{money(invoices.reduce((sum, invoice) => sum + invoice.amount, 0))}</CardTitle></CardHeader><CardContent className="text-sm text-zinc-400">Draft, sent, approved</CardContent></Card>
-        <Card><CardHeader className="pb-2"><CardDescription>Trust balances</CardDescription><CardTitle className="text-3xl">{money(trustAccounts.reduce((sum, account) => sum + account.balance, 0))}</CardTitle></CardHeader><CardContent className="text-sm text-zinc-400">Client funds held separately</CardContent></Card>
-      </section>
+      <Stagger className="grid gap-4 md:grid-cols-4">
+        <StaggerItem><Card><CardHeader className="pb-2"><CardDescription>Total fees</CardDescription><CardTitle className="flex items-center gap-2 text-3xl"><CircleDollarSign className="h-6 w-6 text-emerald-200" />{money(totalFees)}</CardTitle></CardHeader><CardContent className="text-base text-[#8888a0]">From 50 time entries</CardContent></Card></StaggerItem>
+        <StaggerItem><Card><CardHeader className="pb-2"><CardDescription>Total hours</CardDescription><CardTitle className="text-3xl">{totalHours.toFixed(1)}</CardTitle></CardHeader><CardContent className="text-base text-[#8888a0]">Billable and non-billable</CardContent></Card></StaggerItem>
+        <StaggerItem><Card><CardHeader className="pb-2"><CardDescription>Invoice pipeline</CardDescription><CardTitle className="text-3xl">{money(invoices.reduce((sum, invoice) => sum + invoice.amount, 0))}</CardTitle></CardHeader><CardContent className="text-base text-[#8888a0]">Draft, sent, approved</CardContent></Card></StaggerItem>
+        <StaggerItem><Card><CardHeader className="pb-2"><CardDescription>Trust balances</CardDescription><CardTitle className="text-3xl">{money(trustAccounts.reduce((sum, account) => sum + account.balance, 0))}</CardTitle></CardHeader><CardContent className="text-base text-[#8888a0]">Client funds held separately</CardContent></Card></StaggerItem>
+      </Stagger>
 
+      <Reveal>
       <section className="grid gap-5 lg:grid-cols-[1fr_24rem]">
         <Card>
           <CardHeader>
@@ -99,7 +98,9 @@ export default function BillingPage() {
           </CardContent>
         </Card>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="grid gap-5 lg:grid-cols-2">
         <Card>
           <CardHeader><CardTitle className="flex items-center gap-2"><FileCheck2 className="h-5 w-5 text-orange-200" /> Invoices</CardTitle><CardDescription>Draft and issued invoices awaiting client action.</CardDescription></CardHeader>
@@ -126,6 +127,7 @@ export default function BillingPage() {
           </CardContent>
         </Card>
       </section>
+      </Reveal>
     </div>
   );
 }

@@ -1,4 +1,6 @@
 import { Clock3, File, FileArchive, Folder, History, Search } from "lucide-react";
+import { Reveal } from "@/components/effects/motion";
+import { PageHero } from "@/components/page-hero";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -14,15 +16,12 @@ export default function DocumentsPage() {
   const featuredDocument = documents[2];
 
   return (
-    <div className="space-y-8">
-      <section>
-        <Badge variant="default" className="mb-4">Document Management</Badge>
-        <h1 className="font-heading text-4xl font-semibold tracking-tight text-gradient">Indexed legal document vault</h1>
-        <p className="mt-4 max-w-3xl text-lg leading-8 text-zinc-400">
-          Eighty seeded documents organized by matter folder, version history, OCR status, and review owner for rapid portfolio review.
-        </p>
-      </section>
+    <div className="space-y-20 md:space-y-[120px]">
+      <PageHero badge="Document Management" badgeVariant="default" title="Indexed legal document vault">
+        Eighty seeded documents organized by matter folder, version history, OCR status, and review owner for rapid portfolio review.
+      </PageHero>
 
+      <Reveal>
       <section className="grid gap-5 lg:grid-cols-[20rem_1fr]">
         <Card>
           <CardHeader>
@@ -86,7 +85,9 @@ export default function DocumentsPage() {
           </CardContent>
         </Card>
       </section>
+      </Reveal>
 
+      <Reveal>
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2"><History className="h-5 w-5 text-violet-200" /> Version history preview</CardTitle>
@@ -108,6 +109,7 @@ export default function DocumentsPage() {
           </div>
         </CardContent>
       </Card>
+      </Reveal>
     </div>
   );
 }

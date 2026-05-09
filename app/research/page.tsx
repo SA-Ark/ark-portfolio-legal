@@ -1,4 +1,6 @@
 import { BookOpen, Bot, FileSearch, Gavel, Send, UserRound } from "lucide-react";
+import { Reveal } from "@/components/effects/motion";
+import { PageHero } from "@/components/page-hero";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -27,15 +29,12 @@ const qa = [
 
 export default function ResearchPage() {
   return (
-    <div className="space-y-8">
-      <section>
-        <Badge variant="purple" className="mb-4">Legal Research RAG</Badge>
-        <h1 className="font-heading text-4xl font-semibold tracking-tight text-gradient">Research assistant with cited answers</h1>
-        <p className="mt-4 max-w-3xl text-lg leading-8 text-zinc-400">
-          Pre-scripted retrieval-augmented Q&A that demonstrates legal analysis, citation surfacing, and workflow handoff to case strategy.
-        </p>
-      </section>
+    <div className="space-y-20 md:space-y-[120px]">
+      <PageHero badge="Legal Research RAG" badgeVariant="purple" title="Research assistant with cited answers">
+        Pre-scripted retrieval-augmented Q&A that demonstrates legal analysis, citation surfacing, and workflow handoff to case strategy.
+      </PageHero>
 
+      <Reveal>
       <section className="grid gap-5 lg:grid-cols-[1fr_22rem]">
         <Card>
           <CardHeader>
@@ -99,6 +98,7 @@ export default function ResearchPage() {
           </Card>
         </div>
       </section>
+      </Reveal>
     </div>
   );
 }

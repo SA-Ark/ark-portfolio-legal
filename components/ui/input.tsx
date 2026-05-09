@@ -6,7 +6,7 @@ const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLI
     <input
       type={type}
       className={cn(
-        "flex h-10 w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-base text-white shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        "flex h-11 w-full rounded-xl border border-white/[0.08] bg-white/[0.055] px-3 py-2 text-base text-white shadow-sm transition-colors file:border-0 file:bg-transparent file:text-base file:font-medium placeholder:text-[#8888a0] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
       ref={ref}
@@ -20,7 +20,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, React.TextareaHTMLAttribu
   ({ className, ...props }, ref) => (
     <textarea
       className={cn(
-        "flex min-h-24 w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-base text-white shadow-sm placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 md:text-sm",
+        "flex min-h-24 w-full rounded-xl border border-white/[0.08] bg-white/[0.055] px-3 py-2 text-base text-white shadow-sm placeholder:text-[#8888a0] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400",
         className
       )}
       ref={ref}
