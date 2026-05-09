@@ -26,3 +26,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signIn: "/",
   },
 });
+
+export const { GET, POST } = handlers;
