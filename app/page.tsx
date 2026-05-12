@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, CalendarClock, Filter, Scale, Search, ShieldAlert, Users } from "lucide-react";
 import { Magnetic, Reveal, Stagger, StaggerItem } from "@/components/effects/motion";
@@ -23,8 +26,30 @@ function riskVariant(risk: string) {
 }
 
 export default function Home() {
+  const [searchQuery, setSearchQuery] = useState("");
+
   const highRisk = cases.filter((legalCase) => legalCase.risk === "High").length;
   const inCourt = cases.filter((legalCase) => legalCase.court !== "Private Transaction").length;
+
+  const filteredCases = searchQuery.trim()
+    ? cases.filter((legalCase) => {
+        const attorney = getAttorney(legalCase.attorneyId);
+        const haystack = [
+          legalCase.caseNumber,
+          legalCase.client,
+          legalCase.title,
+          legalCase.practiceArea,
+          legalCase.status,
+          legalCase.risk,
+          legalCase.nextDeadline,
+          attorney?.name ?? "",
+          attorney?.role ?? "",
+        ]
+          .join(" ")
+          .toLowerCase();
+        return haystack.includes(searchQuery.toLowerCase());
+      })
+    : cases;
 
   return (
     <div className="space-y-20 md:space-y-[120px]">
@@ -99,7 +124,7 @@ export default function Home() {
             </div>
             <div className="relative w-full md:w-80">
               <Search className="pointer-events-none absolute left-3 top-3.5 h-4 w-4 text-[#8888a0]" />
-              <Input className="pl-9" placeholder="Search client, case #, attorney..." />
+              <Input className="pl-9" placeholder="Search client, case #, attorney..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
             </div>
           </CardHeader>
           <CardContent>
@@ -117,7 +142,7 @@ export default function Home() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {cases.map((legalCase) => {
+                {filteredCases.map((legalCase) => {
                   const attorney = getAttorney(legalCase.attorneyId);
                   return (
                     <TableRow key={legalCase.id}>
